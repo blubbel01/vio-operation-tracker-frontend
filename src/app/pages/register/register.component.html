@@ -1,0 +1,12 @@
+<div class="form-wrapper">
+  <div class="title" *ngIf="faction == null">Registrieren</div>
+  <div class="title" *ngIf="faction != null">Registrieren: {{faction.name}}</div>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmitLogin()" class="form">
+    <input formControlName="name" placeholder="Benutzername" type="text">
+    <input formControlName="password" placeholder="Passwort" type="password">
+    <input formControlName="password2" placeholder="Passwort wiederholen" type="password">
+    <button class="button">Registrieren</button>
+    <p class="error-msg" *ngIf="errorMessage.length > 0">{{errorMessage}}</p>
+  </form>
+  <div class="button" [routerLink]="'/factions/' + faction.id + '/login'" *ngIf="faction != null">Zum Anmelden</div>
+</div>

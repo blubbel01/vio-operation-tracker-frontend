@@ -1,0 +1,16 @@
+@import "../../app.component";
+
+.info {
+  margin: 5vh auto;
+  width: 30%;
+  min-width: 500px;
+  text-align: center;
+  color: #FFF;
+  background-color: rgba($dark-background, .25);
+
+  .title {
+    font-size: 2.5vh;
+  }
+
+  border: .1vh #FFF solid;
+}
