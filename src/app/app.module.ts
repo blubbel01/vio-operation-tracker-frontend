@@ -61,7 +61,7 @@ import {ToggleButtonComponent} from './utils/toggle-button/toggle-button.compone
     NgxCleaveDirectiveModule,
   ],
   providers: [
-    {provide: 'ApiBaseUrl', useValue: 'http://127.0.0.1:8080'},
+    {provide: 'ApiBaseUrl', useValue: 'http://pj-dev.de:8081/'},
     {provide: HTTP_INTERCEPTORS, useClass: HttpTokenInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
