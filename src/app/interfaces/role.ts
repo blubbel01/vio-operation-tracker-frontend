@@ -12,3 +12,11 @@ export interface IRole {
   factionId: number
   faction?: IFaction
 }
+
+export interface IRoleCreateRequest {
+  name: string
+  accessLevel: number
+  alwaysAdd: number
+  perHourValue: number
+  factionId: number
+}

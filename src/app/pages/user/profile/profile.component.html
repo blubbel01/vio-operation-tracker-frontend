@@ -1,0 +1,10 @@
+<div class="form-wrapper">
+  <div class="title">Passwort ändern</div>
+  <form [formGroup]="changePasswordForm" (ngSubmit)="onSubmit()" class="form">
+    <input formControlName="passwordOld" placeholder="Altes Passwort" type="password">
+    <input formControlName="passwordNew" placeholder="Neues Passwort" type="password">
+    <input formControlName="passwordNew2" placeholder="Neues Passwort wiederholen" type="password">
+    <button class="button">Passwort ändern</button>
+    <p class="error-msg" *ngIf="errorMessage.length > 0">{{errorMessage}}</p>
+  </form>
+</div>

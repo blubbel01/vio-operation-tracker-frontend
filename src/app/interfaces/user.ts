@@ -12,7 +12,7 @@ export interface IUser {
 
   isAdmin: boolean
 
-  lastPayDate: Date
+  lastPayDate: string
 
   factionId: number
   roleId: number
@@ -21,7 +21,16 @@ export interface IUser {
   faction?: IFaction
   operations?: IOperation[]
 
-  createdAt: Date
-  updatedAt: Date
-  deletedAt: Date
+  createdAt: string
+  updatedAt: string
+  deletedAt: string
+}
+
+export interface IUpdateUserRequest {
+  name?: string
+  old_password?: string
+  new_password?: string
+  isAdmin?: boolean
+  roleId?: number | null
+  payedNow?: boolean
 }

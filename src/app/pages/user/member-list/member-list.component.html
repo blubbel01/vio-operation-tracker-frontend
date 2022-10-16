@@ -1,1 +1,22 @@
-<p>member-list works!</p>
+<div class="user-wrapper">
+
+  <input type="text" placeholder="Suche" [(ngModel)]="filter">
+
+  <div class="list">
+    <div class="user">
+      <div>Name</div>
+      <div>Zuletzt bezahlt</div>
+    </div>
+    <div class="user" *ngFor="let user of users | search:'id,name':filter">
+      <div>{{user.name}}</div>
+      <div>{{getDateByDateString(user.lastPayDate) | date: 'dd.MM.YYYY'}}</div>
+      <ng-container *ngIf="authService.isAdmin()">
+        <div *ngIf="!user.isAdmin" class="button" (click)="setAdminStatus(user, true)">Admin hinzufügen</div>
+        <div *ngIf="user.isAdmin" class="button" (click)="setAdminStatus(user, false)">Admin entfernen</div>
+      </ng-container>
+      <div *ngIf="!authService.isAdmin()" class="button">Bezahlen</div>
+      <div class="button" [routerLink]="user.id">Verwalten</div>
+    </div>
+  </div>
+
+</div>

@@ -40,8 +40,8 @@ export class LoginComponent implements OnInit {
   async onSubmitLogin() {
     if (this.loginForm.status == 'VALID') {
       const {name, password} = this.loginForm.value;
-      if (await this.authService.login(name, password)) {
-        this.router.navigate(['/home']);
+      if (await this.authService.login(name, password, this.faction?.id)) {
+        this.router.navigate(['/']);
       } else {
         this.errorMessage = 'Name oder Passwort ist falsch!';
       }

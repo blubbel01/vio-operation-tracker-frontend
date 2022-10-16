@@ -1,1 +1,84 @@
-<p>roles-edit works!</p>
+
+<p class="page-title">Rolle Bearbeiten: {{role?.name}}</p>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="categories" data-key="categories">
+    <div class="category">
+      <div class="name">Allgemein</div>
+      <div class="settings">
+
+        <div class="setting">
+          <div class="name">Name</div>
+          <div class="string-wrapper">
+            <input formControlName="name" placeholder="Name" type="text" />
+          </div>
+        </div>
+
+        <div class="setting" style="display: none">
+          <div class="name">Grundgehalt</div>
+          <div class="string-wrapper">
+            <input formControlName="alwaysAdd" placeholder="Grundgehalt" type="text" [cleave]="{numeral: true, numeralDecimalMark:',', delimiter:'',numeralPositiveOnly:true,numeralDecimalScale:0}" />
+          </div>
+        </div>
+
+        <div class="setting" style="display: none">
+          <div class="name">Spielstundenlohn</div>
+          <div class="string-wrapper">
+            <input formControlName="perHourValue" placeholder="Spielstundenlohn" type="text" [cleave]="{numeral: true, numeralDecimalMark:',', delimiter:'',numeralPositiveOnly:true,numeralDecimalScale:0}" />
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="category">
+      <div class="name">Berechtigungen</div>
+      <div class="settings">
+
+        <div class="setting">
+          <div class="name">An Aktionen Teilnehmen</div>
+          <app-toggle-button formControlName="PERMISSION_1"></app-toggle-button>
+        </div>
+
+        <div class="setting">
+          <div class="name">Aktionen eintragen</div>
+          <app-toggle-button formControlName="PERMISSION_2"></app-toggle-button>
+        </div>
+
+        <div class="setting">
+          <div class="name">Aktionen Verwalten</div>
+          <app-toggle-button formControlName="PERMISSION_3"></app-toggle-button>
+        </div>
+
+        <div class="setting">
+          <div class="name">Aktionstypen Verwalten</div>
+          <app-toggle-button formControlName="PERMISSION_4"></app-toggle-button>
+        </div>
+
+        <div class="setting">
+          <div class="name">Mitglieder Verwalten</div>
+          <app-toggle-button formControlName="PERMISSION_5"></app-toggle-button>
+        </div>
+
+        <div class="setting">
+          <div class="name">Rollen Verwalten</div>
+          <app-toggle-button formControlName="PERMISSION_6"></app-toggle-button>
+        </div>
+
+        <div class="setting">
+          <div class="name">Fraktion Verwalten</div>
+          <app-toggle-button formControlName="PERMISSION_7"></app-toggle-button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <div class="btn-group">
+    <div class="button" (click)="onBack()">Zurück</div>
+    <button class="button" type="submit">Speichern</button>
+    <div class="button" (click)="onDelete()">Löschen</div>
+  </div>
+</form>
+

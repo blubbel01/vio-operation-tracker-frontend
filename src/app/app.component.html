@@ -2,12 +2,12 @@
   <div class="item_wrapper">
     <div class="header">
       <div></div>
-      <p>Gruppenauszahlungen {{auth.isLoggedIn()}}</p>
+      <p>Gruppenauszahlungen</p>
     </div>
 
     <div class="menu">
 
-      <div routerLink="/login" routerLinkActive="active" *ngIf="auth.isLoggedOut()">
+      <div routerLink="/login" routerLinkActive="active" *ngIf="authService.isLoggedOut()">
         <div class="yellowLine"></div>
         <div class="innerMenu">
           <fa-icon [icon]="fas.faUser"></fa-icon>
@@ -15,7 +15,7 @@
         </div>
       </div>
 
-      <div routerLink="/factions" routerLinkActive="active" *ngIf="auth.isLoggedOut()">
+      <div routerLink="/factions" routerLinkActive="active" *ngIf="authService.isLoggedOut()">
         <div class="yellowLine"></div>
         <div class="innerMenu">
           <fa-icon [icon]="fas.faLayerGroup"></fa-icon>
@@ -23,7 +23,7 @@
         </div>
       </div>
 
-      <div routerLink="/register-faction" routerLinkActive="active" *ngIf="auth.isLoggedOut()">
+      <div routerLink="/register-faction" routerLinkActive="active" *ngIf="authService.isLoggedOut()">
         <div class="yellowLine"></div>
         <div class="innerMenu">
           <fa-icon [icon]="fas.faSquarePlus"></fa-icon>
@@ -31,11 +31,51 @@
         </div>
       </div>
 
-      <div routerLink="/register-faction" routerLinkActive="active" *ngIf="auth.isLoggedOut()">
+      <div routerLink="/admin/factions" routerLinkActive="active" *ngIf="authService.isAdmin()">
         <div class="yellowLine"></div>
         <div class="innerMenu">
-          <fa-icon [icon]="fas.faSquarePlus"></fa-icon>
-          <p>Neue Fraktion</p>
+          <fa-icon [icon]="fas.faLayerGroup"></fa-icon>
+          <p>Alle Fraktionen</p>
+        </div>
+      </div>
+
+      <div routerLink="/management" routerLinkActive="active" *ngIf="authService.isInFaction() && authService.hasPermission([EPermission.MANAGE_FACTION, EPermission.MANAGE_OPERATION_TYPES, EPermission.MANAGE_ROLES, EPermission.MANAGE_USER, EPermission.MANAGE_OPERATIONS])">
+        <div class="yellowLine"></div>
+        <div class="innerMenu">
+          <fa-icon [icon]="fas.faCog"></fa-icon>
+          <p>Verwaltung</p>
+        </div>
+      </div>
+
+      <div routerLink="/operations" routerLinkActive="active" *ngIf="authService.isInFaction() && authService.hasPermission([EPermission.PARTICIPATE_OPERATION, EPermission.ADD_OPERATIONS, EPermission.MANAGE_OPERATIONS])">
+        <div class="yellowLine"></div>
+        <div class="innerMenu">
+          <fa-icon [icon]="fas.faList"></fa-icon>
+          <p>Aktionen</p>
+        </div>
+      </div>
+
+      <div routerLink="/payment" routerLinkActive="active" *ngIf="authService.isInFaction() && authService.hasPermission([EPermission.PARTICIPATE_OPERATION, EPermission.ADD_OPERATIONS, EPermission.MANAGE_OPERATIONS])">
+        <div class="yellowLine"></div>
+        <div class="innerMenu">
+          <fa-icon [icon]="fas.faMoneyBill"></fa-icon>
+          <p>Auszahlung</p>
+        </div>
+      </div>
+
+      <div routerLink="/me" routerLinkActive="active" *ngIf="authService.isLoggedIn()">
+        <div class="yellowLine"></div>
+        <div class="innerMenu">
+          <fa-icon [icon]="fas.faUserGear"></fa-icon>
+          <p>Account</p>
+        </div>
+      </div>
+
+      <div *ngIf="authService.isLoggedIn()" (click)="logoutAction()">
+        <div class="yellowLine"></div>
+        <div class="innerMenu">
+          <fa-icon [icon]="fas.faDoorOpen"></fa-icon>
+          <p>Abmelden</p>
         </div>
       </div>
 

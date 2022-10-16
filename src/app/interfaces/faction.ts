@@ -12,11 +12,11 @@ export interface IFaction {
 
     userLimit: number
     nextUserLimit: number
-    payedUntil: Date
+    payedUntil: string
 
-    createdAt: Date
-    updatedAt: Date
-    deletedAt: Date
+    createdAt: string
+    updatedAt: string
+    deletedAt: string
 }
 
 export interface IFactionRegisterRequest {
@@ -24,4 +24,11 @@ export interface IFactionRegisterRequest {
   userLimit: number
   username: string
   password: string
+}
+
+export interface IFactionPaymentResponse {
+  id: number
+  vioId: number
+  name: string
+  money: number
 }

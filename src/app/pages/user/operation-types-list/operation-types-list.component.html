@@ -1,0 +1,18 @@
+<div class="role-wrapper">
+
+  <input type="text" placeholder="Suche" [(ngModel)]="filter">
+
+  <div class="list">
+    <div class="role">
+      <div>Name</div>
+      <div></div>
+      <div class="button" (click)="newOperationType()">Neuen Aktionstyp</div>
+    </div>
+    <div class="role" *ngFor="let operationType of operationTypes | search:'id,name':filter">
+      <div>{{operationType.name}}</div>
+      <div></div>
+      <div class="button" [routerLink]="operationType.id">Verwalten</div>
+    </div>
+  </div>
+
+</div>

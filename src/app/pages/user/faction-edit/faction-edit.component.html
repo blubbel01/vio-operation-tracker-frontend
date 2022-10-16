@@ -1,1 +1,35 @@
-<p>faction-edit works!</p>
+<p class="page-title">Fraktionsübersicht</p>
+
+<div class="information">
+  <div class="data">
+    <div class="key">Name</div>
+    <div class="value">
+      <input type="text" *ngIf="faction != null" [(ngModel)]="nextFactionName" (change)="updateFaction()">
+    </div>
+  </div>
+
+  <div class="data">
+    <div class="key">Mitgliederlimit</div>
+
+    <div class="value" *ngIf="!authService.isAdmin()">{{faction?.userLimit}}</div>
+
+    <div class="value" *ngIf="authService.isAdmin()">
+      <input type="text" *ngIf="faction != null" [(ngModel)]="nextUserLimit"
+             [cleave]="{numeral: true, numeralDecimalMark:'', delimiter:'',numeralPositiveOnly:true,numeralDecimalScale:0}" (keydown.enter)="faction.userLimit = nextUserLimit; updateFaction()">
+    </div>
+
+  </div>
+
+  <ng-container *ngIf="(faction?.userLimit || 0) > 12">
+    <div class="data" *ngIf="factionService.isFactionActive(faction)">
+      <div class="key">Bezahlt bis</div>
+      <div class="value">{{getDateByDateString(faction?.payedUntil) | date : 'dd.MM.YYYY'}}</div>
+    </div>
+  </ng-container>
+
+</div>
+
+<div class="btn-group">
+  <div class="button" (click)="onDelete()">Löschen</div>
+  <div class="button" *ngIf="authService.isAdmin()" routerLink="members">Mitgliederverwaltung</div>
+</div>

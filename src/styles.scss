@@ -44,6 +44,15 @@ body {
   background-image: linear-gradient(135deg, rgba(0, 0, 0, 0.25) 0%, rgba($base-color, 0.25) 100%);
 }
 
+.wrapper::before {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  content: '';
+  z-index: -1;
+  background-image: url(./assets/images/bg.png);
+}
+
 #closeButton {
   color: #ffffff;
   text-shadow: 0 0 2vh $base-color;

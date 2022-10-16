@@ -1,1 +1,19 @@
-<p>payment-list works!</p>
+<div class="user-wrapper">
+
+  <div></div>
+
+  <div class="list">
+    <div class="user">
+      <div>Name</div>
+      <div>Geld</div>
+    </div>
+    <div class="user" *ngFor="let user of payment">
+      <div>{{user.name}}</div>
+      <div>{{user.money | currency: 'USD'}}</div>
+      <div *ngIf="authService.hasPermission([EPermission.MANAGE_OPERATIONS]) && user.money > 0" class="button"
+           (click)="markAsPayed(user)">Bezahlt
+      </div>
+    </div>
+  </div>
+
+</div>

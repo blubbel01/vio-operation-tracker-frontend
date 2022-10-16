@@ -1,1 +1,47 @@
-<p>member-edit works!</p>
+
+<p class="page-title">Mitglied Bearbeiten: {{user?.name}}</p>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="categories" data-key="categories">
+    <div class="category" *ngIf="user?.id != authService.lastUser?.id">
+      <div class="name">Neues Passwort setzen</div>
+      <div class="settings">
+
+        <div class="setting">
+          <div class="name">Neues Passwort</div>
+          <div class="string-wrapper">
+            <input formControlName="password" placeholder="Neues Passwort" type="password" />
+          </div>
+        </div>
+
+        <div class="setting">
+          <div class="name">Neues Passwort wiederholen</div>
+          <div class="string-wrapper">
+            <input formControlName="password2" placeholder="Neues Passwort wiederholen" type="password" />
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="category">
+      <div class="name">Rollen</div>
+      <div class="button-column">
+
+        <div [ngClass]="{'button': true, 'active': user?.roleId == null}" (click)="setRole(-1)">Keine Rolle</div>
+        <div [ngClass]="{'button': true, 'active': user?.roleId == role.id}" (click)="setRole(role.id)" *ngFor="let role of roles">{{role.name}}</div>
+
+      </div>
+    </div>
+  </div>
+
+  <p class="error-msg" *ngIf="errorMessage.length > 0">{{errorMessage}}</p>
+
+
+  <div class="btn-group">
+    <div class="button" (click)="onBack()">Zurück</div>
+    <button class="button" type="submit" *ngIf="user?.id != authService.lastUser?.id">Speichern</button>
+    <div class="button" (click)="onDelete()" *ngIf="!user?.isAdmin">Löschen</div>
+  </div>
+</form>
+

@@ -2,7 +2,7 @@
   <div class="title">Neue Fraktion Registrieren</div>
   <form [formGroup]="registerForm" (ngSubmit)="onSubmitLogin()" class="form">
     <input formControlName="faction" placeholder="Fraktionsname" type="text">
-    <input formControlName="userLimit" type="number" min="8" value="8" step="1">
+    <input formControlName="userLimit" placeholder="Memberlimit" type="number" min="8" value="8" step="1">
     <input formControlName="username" placeholder="Benutzername" type="text">
     <input formControlName="password" placeholder="Passwort" type="password">
     <input formControlName="password2" placeholder="Passwort wiederholen" type="password">
@@ -13,10 +13,8 @@
 
 <div class="info">
   <div class="title">Preis</div>
-  <p>Bis 8 Benutzer ist der Aktionstracker kostenlos.</p>
-  <p>Jeder weitere Benutzer kostet $1500 pro Monat extra.</p>
+  <p>Bis 12 Benutzer ist der Aktionstracker kostenlos.</p>
   <p>
-    Zahlung erfolgt per Ingame-Überweisung an "Shepard"<br>
-    Genaurer Anweisungen findet man in der Fraktionsverwaltung
+    Fraktionen und Gruppen mit mehr als 12 Spielern können sich bei Shepard melden.
   </p>
 </div>

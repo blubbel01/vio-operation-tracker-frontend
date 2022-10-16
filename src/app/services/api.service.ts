@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpContext, HttpHeaders, HttpParams} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +11,16 @@ export class ApiService {
   get<T>(uri: string): Promise<T> {
     return new Promise<T>(res => {
       this.http.get<T>(uri).subscribe((data) => {
+        res(data);
+      })
+    });
+  }
+
+  getWithParams<T>(uri: string, params: {[key: string]: any}): Promise<T> {
+    return new Promise<T>(res => {
+      this.http.get<T>(uri, {
+        params
+      }).subscribe((data) => {
         res(data);
       })
     });

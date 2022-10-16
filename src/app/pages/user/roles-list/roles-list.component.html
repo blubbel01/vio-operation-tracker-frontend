@@ -1,0 +1,18 @@
+<div class="role-wrapper">
+
+  <input type="text" placeholder="Suche" [(ngModel)]="filter">
+
+  <div class="list">
+    <div class="role">
+      <div>Name</div>
+      <div></div>
+      <div class="button" (click)="newRole()">Neue Rolle erstellen</div>
+    </div>
+    <div class="role" *ngFor="let role of roles | search:'id,name':filter">
+      <div>{{role.name}}</div>
+      <div></div>
+      <div class="button" [routerLink]="role.id">Verwalten</div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,71 @@
+@import "../../../app.component";
+
+.information {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 2vh;
+  grid-row-gap: 1vh;
+
+  .data {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 1vh;
+
+    height: 4vh;
+    color: #FFF;
+
+    div {
+      padding: 1vh;
+      background-color: $dark-background;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .key {
+      font-size: 1.75vh;
+      font-weight: bold;
+
+      border-left: $base-color solid .25vh;
+    }
+
+    .value {
+      select,
+      input {
+        font-size: 1.5vh;
+        color: #FFF;
+        text-align: center;
+        font-weight: bold;
+
+
+        border:none;
+        outline:none;
+        background:transparent;
+
+        option {
+          color: #000;
+        }
+      }
+    }
+
+  }
+}
+
+
+.info {
+  margin: 5vh auto;
+  width: 30%;
+  min-width: 500px;
+  text-align: center;
+  color: #FFF;
+  background-color: rgba($dark-background, .25);
+
+  .title {
+    font-size: 2.5vh;
+  }
+
+  border: .1vh #FFF solid;
+}
+

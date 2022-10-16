@@ -22,6 +22,13 @@ $positive: #008F39;
   color: #FFF;
   font-weight: 550;
   font-size: 2vh;
+  display: flex;
+  justify-content: space-between;
+
+  .button {
+    width: auto;
+    padding: 0 1vh;
+  }
 }
 
 .form-wrapper {
@@ -38,28 +45,6 @@ $positive: #008F39;
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 1vh;
-
-
-  .button {
-    background-color: rgba($dark-background, 0.25);
-    border: $base-color solid .1vh;
-
-    font-size: 100%;
-
-    text-align: center;
-    color: #FFF;
-
-    user-select: none;
-
-    cursor: pointer;
-
-    transition-duration: 150ms;
-  }
-
-  .button:hover {
-    background-color: $dark-background;
-    color: $base-color;
-  }
 
   .form {
     display: grid;
@@ -78,10 +63,53 @@ $positive: #008F39;
 
       transition-duration: 150ms;
     }
+  }
+}
 
-    .error-msg {
-      color: $negative;
-      text-align: center;
-    }
+.error-msg {
+  color: $negative;
+  text-align: center;
+}
+
+.button {
+  background-color: rgba($dark-background, 0.25);
+  border: $base-color solid .1vh;
+
+  font-size: 100%;
+
+  text-align: center;
+  color: #FFF;
+
+  user-select: none;
+
+  cursor: pointer;
+
+  transition-duration: 150ms;
+}
+
+.button.active {
+  background-color: rgba($base-color, 0.25);
+}
+
+.button:not(.active):hover {
+  background-color: $dark-background;
+  color: $base-color;
+}
+
+.btn-group {
+  display: grid;
+
+  margin: 3vh auto;
+
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1vh;
+
+  .button {
+    height: 3vh;
+    font-size: 2vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 }

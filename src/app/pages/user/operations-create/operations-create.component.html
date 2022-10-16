@@ -1,1 +1,47 @@
-<p>operations-create works!</p>
+
+<p class="page-title">Neue Aktion eintragen</p>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="categories" data-key="categories">
+    <div class="category">
+      <div class="name">Allgemein</div>
+      <div class="settings">
+
+        <div class="setting">
+          <div class="name">Name</div>
+          <div class="string-wrapper">
+            <select formControlName="operationTypeId">
+              <option *ngFor="let operationType of operationTypes" [value]="operationType.id">{{operationType.name}}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="setting">
+          <div class="name">Datum</div>
+          <div class="date-time-wrapper">
+            <input formControlName="date" placeholder="Datum" type="text" [cleave]="{date: true, datePattern: ['d','m','Y']}" />
+            <input formControlName="time" placeholder="Uhrzeit" type="text" [cleave]="{time: true, timePattern: ['h','m']}" />
+          </div>
+        </div>
+
+        <div class="setting">
+          <div class="name">Wert</div>
+          <div class="string-wrapper">
+            <input formControlName="value" placeholder="Wert" type="text" [cleave]="{numeral: true, numeralDecimalMark:',', delimiter:'',numeralPositiveOnly:true,numeralDecimalScale:0}" />
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="btn-group">
+    <button class="button" type="submit">Speichern</button>
+    <div></div>
+    <div class="button">Zurück</div>
+  </div>
+
+</form>
+

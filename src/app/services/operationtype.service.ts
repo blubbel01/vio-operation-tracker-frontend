@@ -1,7 +1,7 @@
 import {Inject, Injectable} from '@angular/core';
 import {ApiService} from "./api.service";
 import {IApiResponse} from "../interfaces/api-responses";
-import {IOperationType} from "../interfaces/operation-type";
+import {IOperationType, IOperationTypeCreateRequest} from "../interfaces/operation-type";
 
 @Injectable({
   providedIn: 'root'
@@ -13,11 +13,11 @@ export class OperationTypeService {
     @Inject('ApiBaseUrl') private apiBaseUrl: string) { }
 
 
-  async getAll(): Promise<IOperationType[]> {
-    return this.api.get<IOperationType[]>(this.apiBaseUrl + '/api/operationtype');
+  async getAll(factionId: number): Promise<IOperationType[]> {
+    return this.api.get<IOperationType[]>(this.apiBaseUrl + '/api/operationtype/all/' + factionId);
   }
 
-  async create(entry: IOperationType): Promise<IOperationType> {
+  async create(entry: IOperationTypeCreateRequest): Promise<IOperationType> {
     return this.api.post<IOperationType>(this.apiBaseUrl + '/api/operationtype/', entry);
   }
 

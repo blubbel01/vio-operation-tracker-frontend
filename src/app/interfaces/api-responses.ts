@@ -1,11 +1,10 @@
-import {IUser} from "./user";
-
 export interface IApiAuthResponse {
-  token: string;
+  token: string
 }
 
-export interface IJWTToken extends IUser{
-  readonly iat: number;
+export interface IJWTToken {
+  readonly id: number
+  readonly iat: number
 }
 
 export interface IApiResponse {

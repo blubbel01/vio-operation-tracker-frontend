@@ -6,18 +6,38 @@ export interface IOperation {
   id: number
   value: number
 
-  timestamp: Date
+  timestamp: number
 
-  createdAt: Date
-  updatedAt: Date
+  createdAt: number
+  updatedAt: number
+
+  valid: boolean
 
   operationTypeId: number
   factionId: number
   creatorId: number
 
-  operationType?: IOperationType
+  operation_type?: IOperationType
   faction?: IFaction
   creator?: IUser
 
   users?: IUser[];
+}
+
+export interface IOperationCreateRequest {
+  value: number
+  operationTypeId: number
+  timestamp: number
+  factionId: number
+}
+
+export interface IOperationUpdateRequest {
+  value?: number
+  operationTypeId?: number
+  valid?: boolean
+}
+
+export interface IOperationGetAllOptions {
+  offset?: number
+  user: boolean
 }

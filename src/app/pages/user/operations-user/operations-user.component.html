@@ -1,1 +1,24 @@
-<p>operations-user works!</p>
+<div class="page-title">
+  Aktionen
+  <div class="button" routerLink="create"><fa-icon [icon]="fas.faPlus"></fa-icon> Aktion eintragen</div>
+</div>
+
+<div class="operations">
+
+  <div class="operation" *ngFor="let operation of operations">
+    <div class="name">{{operation.operation_type?.name}}</div>
+    <div class="time">{{operation.timestamp | date: 'HH.MM dd.mm.YYYY'}}</div>
+    <div class="users">
+      <div class="user" *ngFor="let user of operation.users">{{user.name}}</div>
+    </div>
+    <div class="options">
+      <div class="button" *ngIf="!userInOperation(operation)" (click)="operationToggleUser(operation, true)"><fa-icon [icon]="fas.faUserPlus"></fa-icon></div>
+      <div class="button" *ngIf="userInOperation(operation)" (click)="operationToggleUser(operation, false)"><fa-icon [icon]="fas.faUserMinus"></fa-icon></div>
+
+      <div class="button" *ngIf="!operation.valid && authService.hasPermission([EPermission.MANAGE_OPERATIONS])" (click)="setValid(operation)"><fa-icon [icon]="fas.faCheck"></fa-icon></div>
+      <div class="button" *ngIf="authService.hasPermission([EPermission.MANAGE_OPERATIONS])" (click)="onDelete(operation)"><fa-icon [icon]="fas.faTrash"></fa-icon></div>
+
+    </div>
+  </div>
+
+</div>

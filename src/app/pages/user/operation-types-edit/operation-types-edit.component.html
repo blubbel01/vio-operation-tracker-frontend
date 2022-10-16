@@ -1,1 +1,69 @@
-<p>operation-types-edit works!</p>
+<p class="page-title">Aktionstyp Bearbeiten: {{operationType?.name}}</p>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="categories" data-key="categories">
+    <div class="category">
+      <div class="name">Allgemein</div>
+      <div class="settings">
+
+        <div class="setting">
+          <div class="name">Name</div>
+          <div class="string-wrapper">
+            <input formControlName="name" placeholder="Name" type="text"/>
+          </div>
+        </div>
+
+        <div class="setting">
+          <div class="name">Wert</div>
+          <div class="string-wrapper">
+            <input formControlName="value" placeholder="Wert" type="text"
+                   [cleave]="{numeral: true, numeralDecimalMark:',', delimiter:'',numeralPositiveOnly:true,numeralDecimalScale:0}"/>
+          </div>
+        </div>
+
+        <div class="setting">
+          <div class="name">Eintragszeit (in Minuten)</div>
+          <div class="string-wrapper">
+            <input formControlName="publicTimeLimit" placeholder="Eintragszeit" type="text"
+                   [cleave]="{numeral: true, numeralDecimalMark:',', delimiter:'',numeralPositiveOnly:true,numeralDecimalScale:0}"/>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="category">
+      <div class="name">Berechnung</div>
+      <div class="button-column">
+
+        <div
+          [ngClass]="{'button': true, 'active': operationType?.paymentMethod == EOperationTypePaymentSystem.TYPE_VALUE}"
+          (click)="setPaymentMethod(EOperationTypePaymentSystem.TYPE_VALUE)"
+        >
+          Fixbetrag
+        </div>
+        <div
+          [ngClass]="{'button': true, 'active': operationType?.paymentMethod == EOperationTypePaymentSystem.ENTRY_VALUE}"
+          (click)="setPaymentMethod(EOperationTypePaymentSystem.ENTRY_VALUE)"
+        >
+          Eintragung
+        </div>
+        <div
+          [ngClass]="{'button': true, 'active': operationType?.paymentMethod == EOperationTypePaymentSystem.ENTRY_VALUE_MULTIPLIED_TYPE_VALUE}"
+          (click)="setPaymentMethod(EOperationTypePaymentSystem.ENTRY_VALUE_MULTIPLIED_TYPE_VALUE)"
+        >
+          A * B
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <div class="btn-group">
+    <div class="button" (click)="onBack()">Zurück</div>
+    <button class="button" type="submit">Speichern</button>
+    <div class="button" (click)="onDelete()">Löschen</div>
+  </div>
+</form>
+

@@ -1,0 +1,4 @@
+<div class="bool-wrapper">
+  <div [ngClass]="{'true': true, 'active': value}" (click)="changeValue(true)">An</div>
+  <div [ngClass]="{'false': true, 'active': !value}" (click)="changeValue(false)">Aus</div>
+</div>

@@ -1,1 +1,9 @@
-<p>faction-list works!</p>
+<div class="faction-wrapper">
+
+  <input type="text" placeholder="Suche" [(ngModel)]="filter">
+
+  <div class="list">
+    <div class="faction" [routerLink]="'/admin/factions/' + faction.id" *ngFor="let faction of factions | search:'id,name':filter">{{faction.name}}</div>
+  </div>
+
+</div>

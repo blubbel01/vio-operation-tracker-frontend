@@ -1,0 +1,59 @@
+@import "../../../app.component";
+
+.faction-wrapper {
+
+  max-height: 100%;
+
+  display: grid;
+  grid-template-rows: 4vh 1fr;
+  grid-gap: 1vh;
+
+  input {
+    color: #FFF;
+    background-color: rgba(#373737, .5);
+    border: .1vh solid transparent;
+    outline: 0;
+
+    transition-duration: 150ms;
+
+    height: 4vh;
+
+    font-size: 1rem;
+  }
+
+  .list {
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    padding: 1vh;
+
+    max-height: 100%;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 1vh;
+
+    .faction {
+      height: 3vh;
+
+      color: #FFF;
+      text-align: left;
+      padding: 0 1vh;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      background-color: rgba($dark-background, .5);
+
+      transition-duration: 150ms;
+      border: .1vh solid transparent;
+    }
+
+    .faction:hover {
+      border-color: $base-color;
+      color: $base-color;
+    }
+  }
+
+}

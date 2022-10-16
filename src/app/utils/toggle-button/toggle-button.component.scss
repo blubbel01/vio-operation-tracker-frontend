@@ -1,0 +1,52 @@
+@import "../../app.component";
+
+.bool-wrapper {
+  width: 50%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1vh;
+
+  user-select: none;
+
+  div {
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    height: 100%;
+    width: 100%;
+
+    background-color: rgba($dark-background, .5);
+    border: #0000 solid .1vh;
+    color: #FFF;
+
+    transition-duration: 150ms;
+
+    cursor: pointer;
+  }
+
+
+  .true.active {
+    border-color: rgba($positive, .75);
+    background-color: rgba($positive, .5);
+    box-shadow: 0 0 0.5rem 0.05rem $positive;
+  }
+
+  .false:not(.active):hover {
+    background-color: rgba($negative, .3);
+    box-shadow: 0 0 0.5rem 0.05rem rgba($negative, .5);
+  }
+
+  .false.active {
+    border-color: rgba($negative, .75);
+    background-color: rgba($negative, .5);
+    box-shadow: 0 0 0.5rem 0.05rem $negative;
+  }
+
+  .true:not(.active):hover {
+    background-color: rgba($positive, .3);
+    box-shadow: 0 0 0.5rem 0.05rem rgba($positive, .5);
+  }
+}

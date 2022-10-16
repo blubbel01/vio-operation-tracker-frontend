@@ -13,3 +13,10 @@ export interface IOperationType {
   factionId: number
   faction?: IFaction
 }
+
+export interface IOperationTypeCreateRequest {
+  name: string
+  paymentMethod: EOperationTypePaymentSystem
+  value: number
+  factionId: number
+}
